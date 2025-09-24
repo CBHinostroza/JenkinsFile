@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+    environment{
+        Instagram="@bryan.araujo"
+    }
+    stages{
+        stage("Clean"){
+            steps{
+                echo "Hola desde Clean (Pipeline)"
+            }
+        }
+        stage("Build"){
+            steps{
+                echo "Hola desde Build (Pipeline)"
+            }
+        }
+        stage("Print Env-Vars"){
+            steps{
+                echo "Mi IG es: $Instagram"
+                echo "Mi IG es: ${env.Instagram}"
+                echo "Mi IG es: ${Instagram}"
+                echo "================================="
+                bat "echo hola mundo"
+                bat "echo Imprimiendo variable desde bat: %Instagram%"
+                bat "echo Imprimiendo variable Git: %GIT_AUTHOR_EMAIL%"
+            }
+        }
+        stage("Print Env-Vars System"){
+            steps{
+                echo "Imprimiendo variable del sistema con 'echo': $env.username"
+                bat "echo Imprimiendo variable del sistema con 'bat': %username%"
+            }
+        }
+    }
+}
