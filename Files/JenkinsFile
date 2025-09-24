@@ -1,0 +1,13 @@
+pipeline {
+    agent any 
+    environment{
+        Instagram="@bryan.araujo"
+    }
+    stages{
+        stage("Initital"){
+            steps{
+                echo "Hola desde Initial (Pipeline)"
+            }
+        }
+    }
+}
